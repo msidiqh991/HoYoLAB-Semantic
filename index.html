@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoyoSemantic</title>
+    <link rel="icon" href="assets/icon/icon.webp">
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+
+/* === variable css === */
+:root {
+    --first-theme: #053B50;
+    --bright-theme: #176B87;
+    --alt-bright-theme: #64CCC5;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+    color: #fff;
+}
+
+body {
+    height: 100vh;
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.jumbotron {
+    font-size: 20px;
+    padding: 60px;
+    background-color: var(--first-theme);
+    text-align: center;
+    color: white;
+}
+
+header.navbar-container {
+    display: flex;
+    flex-direction: column;
+}
+    
+header.navbar-container img {
+    width: 350px;
+}
+
+nav {
+    background-color: var(--bright-theme);
+    padding: 5px;
+    top: 0;
+}
+
+nav li {
+    display: inline;
+    list-style-type: none;
+    margin-right: 20px;
+}
+
+nav a {
+    font-size: 18px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: .5s;
+}
+
+nav a:hover {
+    color: var(--first-theme);
+    transition: .5s;
+    font-weight: 500;
+}
+
+main {
+    padding: 20px;
+    background-color: var(--alt-bright-theme);
+    display: flex;
+}
+
+.card {
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: var(--first-theme);
+    text-align: justify;
+}
+
+.card button {
+    padding: 10px 15px 10px 15px;
+    margin-block-start: 2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: 'Quicksand', sans-serif;
+    color: var(--first-theme);
+    border: 3px solid transparent;
+    background-color: var(--alt-bright-theme);
+    cursor: pointer;
+    transition: all .15s ease-in;
+    display: flex;
+}
+
+#readMorePost, #readMoreEvents {
+    display: none;
+}
+
+.card button:hover{
+    border: 3px solid var(--alt-bright-theme);
+    color: var(--alt-bright-theme);
+    background-color: transparent;
+}
+
+.content-detail h3 {
+    color: var(--alt-bright-theme);
+}
+
+.content-detail img {
+    width: 60%;
+    max-height: 350px;
+    object-fit: cover;
+    object-position: center;
+    border: 3px solid var(--alt-bright-theme);
+    border-radius: 15px;
+}
+
+.content-detail ul {
+    padding-left: 0;
+    display: flex;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.content-detail li {
+    list-style-type: none;
+    padding: .4rem;
+    border-radius: 10px;
+    background-color: var(--alt-bright-theme);
+    color: var(--first-theme);
+    font-weight: 600;
+}
+
+.content-detail span {
+    margin-inline: auto;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+#content {
+    flex: 2; 
+    padding: 20px;
+}
+
+aside {
+    flex: 1;
+    padding: 20px; 
+}
+
+.slider {
+    max-width: 100%;
+}
+
+.sidebar {
+    text-align: center;
+}
+
+.sliderDots {
+    height: 6px;
+    width: 12px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 20%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active {
+    background-color: var(--alt-bright-theme)
+}
+
+.content-detail > .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+.caption-text {
+    padding: 8px 12px;
+    width: 100%;
+    font-weight: 500;
+    text-align: center;
+}
+
+.slider img {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+}
+
+section .topicsDetail {
+    box-shadow: none;
+    background-color: var(--bright-theme);
+    margin-top: 8px;
+    padding: .7rem;
+    transition: .4s ease-out;
+}
+
+section .topicsDetail:hover {
+    background-color: var(--first-theme);
+    border: 1px solid var(--alt-bright-theme);
+    transition: .3s ease-in;
+}
+
+section .topicsDetail > span {
+    cursor: pointer;
+}
+
+.topicsDetail > .text-muted {
+    font-size: x-small;
+    font-weight: bold;
+    color: var(--alt-bright-theme)
+}
+
+
+#feature-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-block: 1rem;
+}
+
+#feature-content > .description {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    padding: .5rem;
+    transition: 0.5s ease;
+}
+
+#feature-content > .description:hover {
+    background-color: var(--bright-theme);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+#feature-content > .description > span {
+    font-size: smaller;
+}
+
+#feature-content img {
+    width: 3rem;
+    height: auto; 
+}
+
+footer {
+    padding: 10px;
+    color: white;
+    background-color: var(--first-theme)
+}
+
+footer p {
+    text-align: center;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4;
+    } 
+    to {
+        opacity: 1
+    };
+  }  
+
+/* Medium devices (landscape tablets, 768px and down) */
+@media screen and (max-width: 768px) {
+    header.navbar-container img {
+        width: 250px;
+    }
+    .content-detail img {
+        width: 100%;
+        max-height: 350px;
+        object-fit: cover;
+        object-position: center;
+        border: 3px solid var(--alt-bright-theme);
+        border-radius: 15px;
+    }
+    .content-detail ul {
+        display: flex;
+        flex-direction: column;
+    }
+    .slider img {
+        border: none;
+    }
+}
+
+@media screen and (max-width: 900px){
+    main {
+        flex-direction: column;
+    }
+    #content,
+    aside {
+        flex: auto;
+        padding: 10px; 
+    }
+    #feature-content img {
+        margin-right: 0; 
+        margin-bottom: 10px;
+    }
+    nav {
+        text-align: center;
+    }
+}
+</style>
+<body>
+    <header class="navbar-container">
+        <div class="jumbotron">
+            <img src="assets/img/header.png" alt="Header Banner" title="HoYoLAB">
+        </div>
+        <nav>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#Events">Events</a></li>
+              <li><a href="#content">Posts</a></li>
+            </ul>
+          </nav>    
+    </header>
+
+    <main>
+        <div id="content">
+            <!-- Artikel Posts -->
+            <article id="official" class="card">
+               <h4>Latest Posts</h4>
+                <div class="content-detail">
+                    <h3>New version Updated of Sumeru in v.3.0</h3>
+                    <img src="assets/img/sumeru.jpg" alt="sumeru"/>
+                    <ul>
+                        <li>#GenshinImpact</li>
+                        <li>#Sumeru</li>
+                        <li>#Version-3.0</li>
+                        <li>#HoYoverse</li>
+                    </ul>
+                </div>
+                <p>
+                    The upcoming version 3.0 will introduce a vast rainforest and playable elemental character Dendro along with the arrival of the Wisdom Nation!
+                    Global interactive entertainment brand HoYoverse has announced that its Open World ARPG game, Genshin Impact, will release a new update v3.0 "Dawn of a Thousand Roses" on August 24th
+                    <span id="dots">....</span>
+                </p>
+                <p id="readMorePost">
+                    This expansion includes not only Sumeru, the fourth of the seven nations, but also the Dendro elemental gameplay mechanism which is the final part of Genshin Impact's seven-element system. Optimizations, more features as well as massive expansions will also be implemented to enhance the gaming experience. Three new pieces of equipment, The Boon of the Elder Tree, Ultra-Hot Burner Lamp Test Model and Fishing Line Stabilizer, can be obtained and used to make collecting wood, processing food and fishing easier. 
+                    A colored shadow overlay has also been applied to make Teyvat a world more alive.
+                </p>
+                <button id="detailNews" onclick="readMorePost()">Read more</button>
+            </article>
+
+            <!-- Artikel Events -->
+            <article id="Events" class="card">
+                <section>
+                    <div class="content-detail">
+                        <h3>Banner Events (Phase 2) on Fontaine, Genshin Impact Version 4.0</h3>
+                        <img src="assets/img/banner-phase2.jpg" alt="Events"/>
+                        <ul>
+                            <li>#GenshinImpact</li>
+                            <li>#HoYoverse</li>
+                            <li>#WishEvents</li>
+                            <li>#Fontaine</li>
+                            <li>#Version-4.0</li>
+                        </ul>
+                    </div>
+                    <p>
+                        In Phase 2 of the Banner 4.0 schedule we have brought back the Geo 5 Star Gentry of Hermitage Zhongli Banner and returned the Hydro Tartaglia (Childe) 5 Star Snezhnaya Farewell Banner. The new Cryo 4 Star Freminet is also featured as one of the upgraded 4 Stars in the Zhongli and Childe Banners
+                        <span id="eventsDots">....</span>
+                    </p>
+                    <p id="readMoreEvents">
+                        This Phase 2 banner is expected to run from Tuesday September 5th to end on Tuesday September 26th - a day before the expected release date of version 4.1. Zhongli (Gentry of Hermitage Banner - Phase 2) : Returns a 5 Star Geo character who uses a polearm.
+                        Tartaglia (Childe) (Farewell of the Snezhnaya Banner - Phase 2) : Returns a bow-wielding 5-Star Hydro character.
+                        Freminet (Gentry of Hermitage and Farewell of Snezhnaya Banners - Phase 2) : A new 4 Star Cryo character who uses claymores.
+                    </p>
+                    <button id="detailEvents" onclick="readMoreEvents()">Read more</button>
+                </section>
+            </article>
+        </div>
+
+        <!-- Konten sidebar / aside -->
+        <aside>
+           <article class="sidebar card">
+            <header>
+                <h3>Toolbox</h3>
+            </header>
+            <section id="feature-content">
+                <div class="description">
+                    <img src="assets/icon/chest.webp" />
+                    <span>Toolbox</span>
+                </div>
+                <div class="description">
+                    <img src="assets/icon/checkin.png" />
+                    <span>Check-in</span>
+                </div>
+                <div class="description">
+                    <img src="assets/icon/battle-chronicle.webp" />
+                    <span>Battle Stats</span>
+                </div>
+                <div class="description">
+                    <img src="assets/icon/hoyowiki.webp" />
+                    <span>HoYoWiki</span>
+                </div>
+            </section>
+           </article>
+
+           <!-- Aside slider session -->
+           <article class="card">
+            <div class="content-detail slider">
+                <h3>Preview Character Banner</h3>
+                <div class="slideshow fade">
+                    <img src="assets/img/childeBanner.jpg" alt="Sidebar"/>
+                    <div class="caption-text">Characters 5-star Hydro (Bow) : Tartaglia</div>
+                </div>
+                <div class="slideshow fade">
+                    <img src="assets/img/zhongliBanner.png" alt="Sidebar"/>
+                    <div class="caption-text">Characters 5-star Geo (Polearm) : Zhongli</div>
+                </div>
+                <div class="slideshow fade">
+                    <img src="assets/img/lyneyBanner.jpg" alt="Sidebar"/>
+                    <div class="caption-text">Characters 5-star Pyro (Bow) : Lyney</div>
+                </div>
+                <div class="sidebar">
+                    <span class="sliderDots"></span> 
+                    <span class="sliderDots"></span> 
+                    <span class="sliderDots"></span> 
+                </div>
+                <section>
+                    <h3>Hot Topics</h3>
+                    <div class="card topicsDetail">
+                        <span>#Fontaine-Tour</span>
+                        <br>
+                        <span class="text-muted">
+                            3,153 posts / 9k members
+                        </span>
+                    </div>
+                    <div class="card topicsDetail">
+                        <span>#Fontaine</span>
+                        <br>
+                        <span class="text-muted">
+                            1,762 posts / 6k members
+                        </span>
+                    </div>
+                    <div class="card topicsDetail">
+                        <span>#Furina de Focalors</span>
+                        <br>
+                        <span class="text-muted">
+                            2,528 posts / 6k members
+                        </span>
+                    </div>
+                </section>
+            </div>
+           </article>
+        </aside>
+    </main>
+
+    <footer>
+        <p>HoyoLabs Semantic Website Guide &#169; 2023, Muhammad Sidiq Hardiansyah</p>
+    </footer>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
